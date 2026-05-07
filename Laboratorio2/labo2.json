@@ -1,0 +1,198 @@
+type: spec.insomnia.rest/5.0
+schema_version: "5.1"
+name: labo 2 capas
+meta:
+  id: wrk_08d14f845e2c4acabad9c1b05c63b13a
+  created: 1778130770229
+  modified: 1778130770229
+  description: ""
+collection:
+  - url: http://localhost:8080/api/wizards
+    name: Create Wizard
+    meta:
+      id: req_b85a0101505744b69db8a5f6fb749819
+      created: 1778130785896
+      modified: 1778139280902
+      isPrivate: false
+      description: ""
+      sortKey: -1778130785897
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "Bellatrix Lestrange",
+          "house": "Slytherin",
+          "patronus": "None",
+          "isDeatheater": true
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/wizards
+    name: Get All
+    meta:
+      id: req_3ee409d4c9c142e88c36871dc4454af2
+      created: 1778137883559
+      modified: 1778139227035
+      isPrivate: false
+      description: ""
+      sortKey: -1778137883559
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/wizards/deatheaters
+    name: Get-Mortifagos
+    meta:
+      id: req_65acf7e71e3b4880a97761163f426462
+      created: 1778137921898
+      modified: 1778139294889
+      isPrivate: false
+      description: ""
+      sortKey: -1778137921898
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "Bellatrix Lestrange",
+          "house": "Slytherin",
+          "patronus": "None",
+          "isDeatheater": true
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/wizards/patronus/Stag
+    name: Get- Patronus
+    meta:
+      id: req_1767f57da284465a9d3303b7561ede6e
+      created: 1778138025417
+      modified: 1778139298344
+      isPrivate: false
+      description: ""
+      sortKey: -1778138025417
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/wizards/2e8437e6-20c1-41d8-af58-906e11f5f1ee
+    name: Put-Update Wizard
+    meta:
+      id: req_6fe8a91e015941c9a29109fd7af722bf
+      created: 1778138085124
+      modified: 1778139303858
+      isPrivate: false
+      description: ""
+      sortKey: -1778138085124
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "Harry James Potter",
+          "house": "Gryffindor",
+          "patronus": "Stag",
+          "isDeatheater": false
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/wizards/delete/5080bda8-0ddb-4c91-9922-16465e8bdc6c
+    name: DELETE- delete Wizard
+    meta:
+      id: req_0f8d8f1c9ca04dd9ad2fc99a441f6327
+      created: 1778138344012
+      modified: 1778139305959
+      isPrivate: false
+      description: ""
+      sortKey: -1778138344012
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_e4cb49f0b4da53ca488c996f143e40e8c0040647
+    created: 1778130770246
+    modified: 1778130770245
+environments:
+  name: Base Environment
+  meta:
+    id: env_e4cb49f0b4da53ca488c996f143e40e8c0040647
+    created: 1778130770240
+    modified: 1778130770240
+    isPrivate: false
+spec:
+  meta:
+    id: spc_59a757c14c4745a49bba3e645850d1b2
+    created: 1778130770234
+    modified: 1778130770234
