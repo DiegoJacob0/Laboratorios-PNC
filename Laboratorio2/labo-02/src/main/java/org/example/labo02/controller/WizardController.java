@@ -28,8 +28,8 @@ public class WizardController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(createdWizard);
     }
-    //Obtener mago
-    @PostMapping
+    //Obtener todos
+    @GetMapping
     public ResponseEntity<List<Wizard>> getAllWizards () {
         return ResponseEntity.ok(wizardService.getAllWizards());
     }
@@ -39,6 +39,38 @@ public class WizardController {
     public ResponseEntity<List<Wizard>> getDeatheaters() {
 
         return ResponseEntity.ok(wizardService.getDeatheaters());
+    }
+
+    // Actualizar mago
+    @PutMapping("/{id}")
+    public ResponseEntity<Wizard> updateWizard(
+            @PathVariable UUID id,
+            @RequestBody Wizard wizard
+    ) {
+
+        return ResponseEntity.ok(
+                wizardService.updateWizard(id, wizard)
+        );
+    }
+
+    // Obtener por nombre de patronus
+    @GetMapping("/patronus/{patronus}")
+    public ResponseEntity<List<Wizard>> getByPatronus(
+            @PathVariable String patronus
+    )
+      {
+        return ResponseEntity.ok(wizardService.getByPatronus(patronus));
+      }
+
+    // Eliminar mago
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteWizard(
+            @PathVariable UUID id
+    ) {
+
+        wizardService.deleteWizard(id);
+
+        return ResponseEntity.ok("Wizard deleted successfully");
     }
 }
 
