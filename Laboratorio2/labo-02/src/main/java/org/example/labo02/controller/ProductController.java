@@ -1,7 +1,7 @@
 package org.example.labo02.controller;
 
 import lombok.AllArgsConstructor;
-import org.example.labo02.domain.entity.Product;
+import org.example.labo02.domain.entity.Wizard;
 import org.example.labo02.service.impl.ProductServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +18,10 @@ public class ProductController {
     private final ProductServiceImpl productService;
 
     @PostMapping("/create")
-    public ResponseEntity<Product> createProduct(@RequestBody Product product){
-        productService.createProduct(product);
+    public ResponseEntity<Wizard> createProduct(@RequestBody Wizard wizard){
+        productService.createProduct(wizard);
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(product);
+                .body(wizard);
 
     }
 

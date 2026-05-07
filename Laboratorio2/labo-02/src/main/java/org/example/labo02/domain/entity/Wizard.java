@@ -10,25 +10,28 @@ import lombok.NoArgsConstructor;
 import java.util.UUID;
 
 @Entity
-@Table(name = "Producto")
+@Table(name = "Wizard")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 
-public class Product {
+public class Wizard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(name = "productName")
+    @Column(name = "wizardName")
     private String name;
 
-    @Column(name = "price")
+    @Column(name = "house")
     private Double price;
 
-    @Column(name = "available")
+    @Column(name = "patronus")
     private Boolean available;
+
+    @Column(name = "is_deatheater")
+    private Boolean isDeatheater;
 
 }

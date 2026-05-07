@@ -1,7 +1,7 @@
 package org.example.labo02.service;
 
-import org.example.labo02.domain.entity.Product;
+import org.example.labo02.domain.entity.Wizard;
 
 public interface ProductService {
-    void createProduct(Product product);
+    void createProduct(Wizard wizard);
 }
