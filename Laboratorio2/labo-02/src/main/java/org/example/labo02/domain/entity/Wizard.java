@@ -26,10 +26,10 @@ public class Wizard {
     private String name;
 
     @Column(name = "house")
-    private Double price;
+    private String house;
 
     @Column(name = "patronus")
-    private Boolean available;
+    private String patronus;
 
     @Column(name = "is_deatheater")
     private Boolean isDeatheater;
