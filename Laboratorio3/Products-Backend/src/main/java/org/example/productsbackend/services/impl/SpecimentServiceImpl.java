@@ -4,11 +4,16 @@ import lombok.RequiredArgsConstructor;
 import org.example.productsbackend.common.mappers.SpecimentMapper;
 import org.example.productsbackend.domain.dto.request.product.CreateSpecimentRequest;
 import org.example.productsbackend.domain.dto.request.product.UpdateSpecimentRequest;
+import org.example.productsbackend.domain.dto.response.PageableResponse;
 import org.example.productsbackend.domain.dto.response.product.SpecimentResponse;
 import org.example.productsbackend.domain.entities.Speciment;
 import org.example.productsbackend.exceptions.ResourceNotFoundException;
 import org.example.productsbackend.repositories.SpecimentRepository;
 import org.example.productsbackend.services.SpecimentService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,21 +37,38 @@ public class SpecimentServiceImpl implements SpecimentService {
     }
 
     @Override
-    public List<Speciment> getAllSpeciment() {
+    public PageableResponse<SpecimentResponse> getAllSpeciment(
+            int page,
+            int size,
+            String sortBy,
+            String sortDirection
+    ) {
 
-        List<Speciment> speciments = specimentRepository.findAll();
+        Sort sort = sortDirection.equalsIgnoreCase("desc")
+                ? Sort.by(sortBy).descending()
+                : Sort.by(sortBy).ascending();
 
-        if(speciments.isEmpty()) {
-            throw new ResourceNotFoundException("No speciments found in records");
-        }
+        Pageable pageable = PageRequest.of(page, size, sort);
 
-        return speciments;
+        Page<Speciment> specimentPage = specimentRepository.findAll(pageable);
+
+        Page<SpecimentResponse> responsePage =
+                specimentMapper.toDtoPage(specimentPage);
+
+        return PageableResponse.<SpecimentResponse>builder()
+                .content(responsePage.getContent())
+                .page(responsePage.getNumber())
+                .size(responsePage.getSize())
+                .totalElements(responsePage.getTotalElements())
+                .totalPages(responsePage.getTotalPages())
+                .last(responsePage.isLast())
+                .build();
     }
 
     @Override
     public Speciment getSpecimentById(UUID id) {
 
-        Speciment speciment = SpecimentRepository.findSpecimentById(id);
+        Speciment speciment = specimentRepository.findSpecimentById(id);
 
         if(speciment == null){
             throw new ResourceNotFoundException("Speciment not found in records");
@@ -72,11 +94,8 @@ public class SpecimentServiceImpl implements SpecimentService {
 
     @Override
     public Speciment deleteSpeciment(UUID id) {
-
         Speciment existSpeciment = this.getSpecimentById(id);
-
         specimentRepository.deleteById(id);
-
         return existSpeciment;
     }
 }

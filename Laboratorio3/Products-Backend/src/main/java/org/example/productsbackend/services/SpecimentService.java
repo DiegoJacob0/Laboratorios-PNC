@@ -2,6 +2,7 @@ package org.example.productsbackend.services;
 
 import org.example.productsbackend.domain.dto.request.product.CreateSpecimentRequest;
 import org.example.productsbackend.domain.dto.request.product.UpdateSpecimentRequest;
+import org.example.productsbackend.domain.dto.response.PageableResponse;
 import org.example.productsbackend.domain.dto.response.product.SpecimentResponse;
 import org.example.productsbackend.domain.entities.Speciment;
 
@@ -12,7 +13,12 @@ public interface SpecimentService {
 
     SpecimentResponse createSpeciment(CreateSpecimentRequest speciment);
 
-    List<Speciment> getAllSpeciment();
+    PageableResponse<SpecimentResponse> getAllSpeciment(
+            int page,
+            int size,
+            String sortBy,
+            String sortDirection
+    );
 
     Speciment getSpecimentById(UUID id);
 

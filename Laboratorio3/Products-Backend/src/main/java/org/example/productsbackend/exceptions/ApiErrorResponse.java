@@ -10,8 +10,7 @@ import java.time.LocalDateTime;
 public class ApiErrorResponse {
 
     private String message;
+    private String path;
     private int status;
     private LocalDateTime time;
-    private String path;
-
 }
