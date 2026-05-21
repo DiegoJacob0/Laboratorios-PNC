@@ -1,64 +1,70 @@
 package org.example.productsbackend.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.example.productsbackend.domain.dto.request.product.CreateProductRequest;
+import org.example.productsbackend.domain.dto.request.product.CreateSpecimentRequest;
+import org.example.productsbackend.domain.dto.request.product.UpdateSpecimentRequest;
 import org.example.productsbackend.domain.dto.response.GeneralResponse;
-import org.example.productsbackend.domain.entities.Product;
-import org.example.productsbackend.services.impl.ProductServiceImpl;
+import org.example.productsbackend.domain.entities.Speciment;
+import org.example.productsbackend.services.SpecimentService;
+import org.example.productsbackend.services.impl.SpecimentServiceImpl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("api/product")
+@RequestMapping("api/speciment")
 @RequiredArgsConstructor
-public class ProductController {
-    private final ProductServiceImpl productService;
+public class SpecimentController {
+    private final SpecimentServiceImpl SpecimentService;
+    private final SpecimentService specimentService;
 
     @PostMapping("/create")
-    public ResponseEntity<GeneralResponse> createProduct(@RequestBody CreateProductRequest product) {
+    public ResponseEntity<GeneralResponse> createSpeciment(@RequestBody CreateSpecimentRequest speciment) {
         return buildResponse(
                 "Product created successfully",
                 HttpStatus.CREATED,
-                productService.createProduct(product)
+                SpecimentService.createSpeciment(speciment)
         );
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<List<Product>> getAllProducts() {
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(productService.getAllProducts());
+    public ResponseEntity<GeneralResponse>    getAllSpeciment() {
+
+        return buildResponse(
+                "Specimens obtained successfully",
+                HttpStatus.OK,
+                specimentService.getAllSpeciment()
+        );
     }
 
     @GetMapping("/getBy/{id}")
-    public ResponseEntity<Product> getProductById(@PathVariable UUID id) {
+    public ResponseEntity<Speciment> getSpecimentById(@PathVariable UUID id) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(productService.getProductById(id));
+                .body(SpecimentService.getSpecimentById(id));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Product> updateProduct(
+    public ResponseEntity<UpdateSpecimentRequest> updateSpeciment(
             @PathVariable UUID id,
-            @RequestBody Product product
-    ) {
-        productService.updateProduct(id, product);
+            @RequestBody UpdateSpecimentRequest speciment
+    )
+    {
+        specimentService.updateSpeciment(id, speciment);
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(product);
+                .body(speciment);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Product> deleteProduct(@PathVariable UUID id) {
+    public ResponseEntity<Speciment> deleteSpeciment(@PathVariable UUID id) {
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(productService.deleteProduct(id));
+                .body(specimentService.deleteSpeciment(id));
 
     }
 
