@@ -1,0 +1,187 @@
+type: spec.insomnia.rest/5.0
+schema_version: "5.1"
+name: Labo3Capas
+meta:
+  id: wrk_04c376da1f1742c29870a47ef86193ef
+  created: 1779338600021
+  modified: 1779352455989
+  description: ""
+collection:
+  - url: http://localhost:8080/api/speciment/getAll?page=0&size=3
+    name: GetAllSize
+    meta:
+      id: req_618839274bde4c19a20123d58a02348e
+      created: 1779338686993
+      modified: 1779352169140
+      isPrivate: false
+      description: ""
+      sortKey: -1779338686993
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/speciment/create
+    name: CreateSpeciment
+    meta:
+      id: req_2a8ec077ca564dccac0a33f6002d7294
+      created: 1779345722070
+      modified: 1779352318464
+      isPrivate: false
+      description: ""
+      sortKey: -1779345722070
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "",
+          "region": "Hyrule",
+          "dangerLevel": 1000,
+          "isFriendly": true
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/speciment/getBy/9bb1bd33-d540-406e-a80c-9e47b2ce339b
+    name: GetSpecimentById
+    meta:
+      id: req_b163f908c2c243ddb2e8bb14c127e425
+      created: 1779346503169
+      modified: 1779351005136
+      isPrivate: false
+      description: ""
+      sortKey: -1779346503169
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/speciment/update/9e6f67ac-3140-48c0-9336-467038d8dc72
+    name: UpdateSpeciment
+    meta:
+      id: req_db439c12e790432c959d3a45b73d21ec
+      created: 1779346546096
+      modified: 1779352314042
+      isPrivate: false
+      description: ""
+      sortKey: -1779346546096
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "name": "Golden Dragon",
+          "region": "Hebra",
+          "dangerLevel": 7,
+          "isFriendly": true
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/speciment/delete/ff56f710-2687-4022-82b7-fad17c10b881
+    name: DeleteSpeciment
+    meta:
+      id: req_7096ac8566c042e2a796f40fc997f24c
+      created: 1779346677074
+      modified: 1779351000258
+      isPrivate: false
+      description: ""
+      sortKey: -1779346677074
+    method: DELETE
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/api/speciment/getAll
+    name: GetAll
+    meta:
+      id: req_a6f35138b2fc43538595de46eb414d06
+      created: 1779352171831
+      modified: 1779352310484
+      isPrivate: false
+      description: ""
+      sortKey: -1779352171831
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_c89ccb3cf2d7ca54aa4a5679b270753a7938a6fe
+    created: 1779338600071
+    modified: 1779338600071
+environments:
+  name: Base Environment
+  meta:
+    id: env_c89ccb3cf2d7ca54aa4a5679b270753a7938a6fe
+    created: 1779338600052
+    modified: 1779338600052
+    isPrivate: false
+spec:
+  meta:
+    id: spc_3079bdbbf78e4d038e1cb952265de5f8
+    created: 1779338600034
+    modified: 1779352455976
