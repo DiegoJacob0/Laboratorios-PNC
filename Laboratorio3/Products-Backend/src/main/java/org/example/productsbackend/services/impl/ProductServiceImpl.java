@@ -5,6 +5,7 @@ import org.example.productsbackend.common.mappers.ProductMapper;
 import org.example.productsbackend.domain.dto.request.product.CreateProductRequest;
 import org.example.productsbackend.domain.dto.response.product.ProductResponse;
 import org.example.productsbackend.domain.entities.Product;
+import org.example.productsbackend.exceptions.ResourceNotFoundException;
 import org.example.productsbackend.repositories.ProductRepository;
 import org.example.productsbackend.services.ProductService;
 import org.springframework.stereotype.Service;
@@ -32,9 +33,15 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProductById(UUID id) {
-        return productRepository.findProductById(id);
-    }
 
+        Product product = productRepository.findProductById(id);
+
+        if(product == null){
+            throw new ResourceNotFoundException("Product not found in records");
+        }
+
+        return product;
+    }
     @Override
     public void updateProduct(UUID id, Product product) {
         Product existProduct = this.getProductById(id);
