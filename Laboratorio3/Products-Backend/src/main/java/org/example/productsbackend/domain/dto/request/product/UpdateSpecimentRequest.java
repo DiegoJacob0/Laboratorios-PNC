@@ -10,12 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateSpecimentRequest {
-
     private String name;
-
     private String region;
-
     private Integer dangerLevel;
-
     private Boolean isFriendly;
 }

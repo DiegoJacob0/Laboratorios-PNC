@@ -14,12 +14,8 @@ import java.util.UUID;
 public class SpecimentResponse {
 
     private UUID id;
-
     private String name;
-
     private String region;
-
     private Integer dangerLevel;
-
     private Boolean isFriendly;
 }

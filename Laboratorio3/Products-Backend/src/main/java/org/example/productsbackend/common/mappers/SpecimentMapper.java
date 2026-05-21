@@ -1,21 +1,35 @@
 package org.example.productsbackend.common.mappers;
 
 import org.example.productsbackend.domain.dto.request.product.CreateSpecimentRequest;
+import org.example.productsbackend.domain.dto.request.product.UpdateSpecimentRequest;
 import org.example.productsbackend.domain.dto.response.product.SpecimentResponse;
 import org.example.productsbackend.domain.entities.Speciment;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 public class SpecimentMapper {
 
-    public Speciment toEntityCreate(CreateSpecimentRequest createSpecimentRequest) {
+    public Speciment toEntityCreate(CreateSpecimentRequest request) {
 
         return Speciment.builder()
-                .name(createSpecimentRequest.getName())
-                .region(createSpecimentRequest.getRegion())
-                .dangerLevel(createSpecimentRequest.getDangerLevel())
-                .isFriendly(createSpecimentRequest.getIsFriendly())
+                .name(request.getName())
+                .region(request.getRegion())
+                .dangerLevel(request.getDangerLevel())
+                .isFriendly(request.getIsFriendly())
+                .build();
+    }
+
+    public Speciment toEntityUpdate(UpdateSpecimentRequest request, UUID id) {
+
+        return Speciment.builder()
+                .id(id)
+                .name(request.getName())
+                .region(request.getRegion())
+                .dangerLevel(request.getDangerLevel())
+                .isFriendly(request.getIsFriendly())
                 .build();
     }
 
@@ -31,6 +45,7 @@ public class SpecimentMapper {
     }
 
     public Page<SpecimentResponse> toDtoPage(Page<Speciment> speciments) {
+
         return speciments.map(this::toDto);
     }
 }
